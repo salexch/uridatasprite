@@ -25,15 +25,14 @@ public class Init {
         MyFile myfile = new MyFile(filename);
         String content = myfile.getContent();
             
-        Pattern pattern = Pattern.compile("^.+}");
+        Pattern pattern = Pattern.compile("([^}]+)(\\})");
         Matcher matcher = pattern.matcher(content);
         
 
         boolean found = false;
         while (matcher.find()) {
-            System.out.println(matcher.group());
             System.out.println(matcher.start());
-            System.out.println(matcher.end());
+            System.out.println(matcher.group(0));
 
             found = true;
         }
